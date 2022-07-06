@@ -83,7 +83,7 @@ public class SafeInput
         String trash = "";
         do
         {
-            System.out.print(prompt + "[" + low + " - " + high + "]: ");
+            System.out.print("\n" + prompt + "[" + low + " - " + high + "]: ");
             if(pipe.hasNextInt())
             {
                 userInput = pipe.nextInt();
@@ -100,7 +100,7 @@ public class SafeInput
             else
             {
                 trash = pipe.nextLine();
-                System.out.println("You must enter an int [" + low + " - " + high + "]: " + trash);
+                System.out.println("You must enter a valid number [" + low + " - " + high + "]: " + trash);
             }
 
         }while(!validInput);
@@ -117,7 +117,7 @@ public class SafeInput
         String trash = "";
         do
         {
-            System.out.print(prompt + "[" + low + " - " + high + "]: ");
+            System.out.print("\n" + prompt + "[" + low + " - " + high + "]: ");
             if(pipe.hasNextDouble())
             {
                 userInput = pipe.nextDouble();
@@ -134,7 +134,64 @@ public class SafeInput
             else
             {
                 trash = pipe.nextLine();
-                System.out.println("You must enter an int [" + low + " - " + high + "]: " + trash);
+                System.out.println("You must enter a valid number [" + low + " - " + high + "]: " + trash);
+            }
+
+        }while(!validInput);
+
+        return userInput;
+    }
+
+
+
+    public static boolean getYNConfirm(Scanner pipe, String prompt)
+    {
+        String userInput = "";
+        boolean validInput = false;
+
+        do {
+            System.out.print("\n" + prompt + "[Y/N]: ");
+            userInput = pipe.nextLine();
+
+            if (userInput.equalsIgnoreCase("y") || userInput.equalsIgnoreCase("n"))
+            {
+                validInput = true;
+            }
+            else
+            {
+                System.out.println("Invalid input: " + userInput);
+            }
+        }while(!validInput);
+
+        if (userInput.equalsIgnoreCase("Y"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+    public static String getRegExString(Scanner pipe, String prompt, String regExPattern)
+    {
+        String userInput = "";
+        boolean validInput = false;
+
+        do
+        {
+            System.out.print("\n" + prompt + ": ");
+            userInput = pipe.nextLine();
+
+            if(userInput.matches(regExPattern))
+            {
+                validInput = true;
+            }
+            else
+            {
+                System.out.println("\nInvalid input: " + userInput);
             }
 
         }while(!validInput);
