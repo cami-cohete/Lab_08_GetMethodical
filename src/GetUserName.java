@@ -1,7 +1,7 @@
-public class Main {
-
+public class GetUserName
+{
     public static void main(String[] args)
     {
-	// write your code here
+
     }
 }
