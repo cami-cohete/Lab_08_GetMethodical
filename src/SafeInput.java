@@ -191,11 +191,51 @@ public class SafeInput
             }
             else
             {
-                System.out.println("\nInvalid input: " + userInput);
+                System.out.println("Invalid input: " + userInput);
             }
 
         }while(!validInput);
 
         return userInput;
+    }
+
+
+
+    public static void prettyHeader(String msg)
+    {
+        boolean messagePrinted = false;
+        int charCnt = 0;
+        int startPoint = 0;
+
+        charCnt = msg.length();
+        startPoint = (54 - charCnt)/2;
+
+        for (int lineCnt = 1; lineCnt <= 3; lineCnt++)
+        {
+            for (int headerLength = 1; headerLength <= 60; headerLength++)
+            {
+                if (lineCnt == 1 || lineCnt == 3)
+                {
+                    System.out.print("*");
+                }
+                else
+                {
+                    if (headerLength == 1 || headerLength == 2 || headerLength == 3 || headerLength == 58 || headerLength == 59 || headerLength == 60)
+                    {
+                        System.out.print("*");
+                    }
+                    else if (headerLength == (startPoint + 3))
+                    {
+                        System.out.print(msg);
+                        headerLength = headerLength + charCnt;
+                    }
+                    else
+                    {
+                        System.out.print(" ");
+                    }
+                }
+            }
+            System.out.print("\n");
+        }
     }
 }
